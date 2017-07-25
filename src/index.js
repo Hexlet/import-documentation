@@ -39,7 +39,12 @@ export const generate = (files) => {
   }, {});
 
   const promises = Object.keys(packages).map(async (packageName) => {
-    const packagePath = getInstalledPath.sync(packageName, { local: true });
+    let packagePath;
+    try {
+      packagePath = await getInstalledPath(packageName, { local: true });
+    } catch (e) {
+      packagePath = await getInstalledPath(packageName);
+    }
     const allPackageDocs = await documentation.build([path.resolve(packagePath, 'src', 'index.js')], {});
     const functions = [...packages[packageName]];
     const packageDocsAll = functions.map((func) => {
