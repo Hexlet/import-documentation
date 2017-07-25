@@ -4,10 +4,12 @@ import 'babel-polyfill';
 
 import path from 'path';
 import fs from 'fs';
-import esprima from 'esprima';
 import getInstalledPath from 'get-installed-path';
+import esprima from 'esprima';
 import documentation from 'documentation';
 import { flatten } from 'lodash';
+
+// console.log(esprima)
 
 const getLocalName = (specifier) => {
   const map = {
@@ -37,7 +39,7 @@ export const generate = (files) => {
   }, {});
 
   const promises = Object.keys(packages).map(async (packageName) => {
-    const packagePath = getInstalledPath.sync(packageName);
+    const packagePath = getInstalledPath.sync(packageName, { local: true });
     const allPackageDocs = await documentation.build([path.resolve(packagePath, 'src', 'index.js')], {});
     const functions = [...packages[packageName]];
     const packageDocsAll = functions.map((func) => {

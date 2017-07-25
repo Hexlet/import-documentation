@@ -26,10 +26,10 @@
   "dependencies": {
     "babel-polyfill": "*",
     "commander": "*",
-    "documentation": "^4.0.0-beta11",
-    "esprima": "*",
-    "lodash": "*",
-    "get-installed-path": "*"
+    "documentation": "^4.0.0-rc.1",
+    "esprima": "^3",
+    "get-installed-path": "*",
+    "lodash": "^4"
   },
   "devDependencies": {
     "babel-cli": "*",
@@ -41,8 +41,9 @@
     "eslint": "*",
     "eslint-config-airbnb": "*",
     "eslint-plugin-flowtype": "*",
-    "flow-bin": "^0.46",
+    "flow-bin": "^0.51",
     "flow-typed": "*",
+    "hexlet-co": "*",
     "hexlet-pairs": "*",
     "jest": "^20"
   },
