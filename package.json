@@ -45,7 +45,7 @@
     "eslint-plugin-flowtype": "*",
     "flow-bin": "^0.56",
     "flow-typed": "*",
-    "hexlet-co": "*",
+    "hexlet-co": "^0.1.5",
     "hexlet-pairs": "*",
     "jest": "^21"
   },
