@@ -1,18 +1,18 @@
 install:
-	yarn
-	yarn run flow-typed install
+	npm install
+	npm run flow-typed install
 
 build:
 	rm -rf dist
-	yarn run build
+	npm run build
 
 test:
-	yarn test
+	npm test
 
 lint:
-	yarn run eslint -- src test
+	npm run eslint -- src test
 
 publish:
-	yarn publish
+	npm publish
 
 .PHONY: test

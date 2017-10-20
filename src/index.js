@@ -1,15 +1,16 @@
 // @flow
 
 import 'babel-polyfill';
+import debug from 'debug';
 
 import path from 'path';
 import fs from 'fs';
-import getInstalledPath from 'get-installed-path';
+import { getInstalledPath } from 'get-installed-path';
 import esprima from 'esprima';
 import documentation from 'documentation';
 import { flatten } from 'lodash';
 
-// console.log(esprima)
+const log = debug('import-documentation');
 
 const getLocalName = (specifier) => {
   const map = {
@@ -80,6 +81,7 @@ export default async (outDir: string, items: Array<string>) => {
     const isDir = fs.lstatSync(fullPath).isDirectory();
     return isDir ? getJsFiles(item) : item;
   }));
+  log('files', files);
   const pathnames = files.map(file => path.resolve(process.cwd(), file));
   const packagesDocs = await generate(pathnames);
   await write(outDir, packagesDocs);

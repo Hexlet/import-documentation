@@ -26,26 +26,28 @@
   "dependencies": {
     "babel-polyfill": "*",
     "commander": "*",
-    "documentation": "^4.0.0-rc.1",
+    "documentation": "*",
     "esprima": "^3",
     "get-installed-path": "*",
-    "lodash": "^4"
+    "lodash": "^4",
+    "debug": "2"
   },
   "devDependencies": {
     "babel-cli": "*",
     "babel-core": "*",
     "babel-eslint": "*",
+    "babel-jest": "*",
     "babel-preset-env": "*",
     "babel-preset-flow": "*",
     "babel-preset-stage-0": "*",
     "eslint": "*",
     "eslint-config-airbnb": "*",
     "eslint-plugin-flowtype": "*",
-    "flow-bin": "^0.51",
+    "flow-bin": "^0.56",
     "flow-typed": "*",
     "hexlet-co": "*",
     "hexlet-pairs": "*",
-    "jest": "^20"
+    "jest": "^21"
   },
   "jest": {
     "testPathIgnorePatterns": [
