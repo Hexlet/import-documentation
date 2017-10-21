@@ -6,7 +6,7 @@ import debug from 'debug';
 import path from 'path';
 import fs from 'fs';
 import { getInstalledPath } from 'get-installed-path';
-import esprima from 'esprima';
+import { parse } from 'babylon';
 import documentation from 'documentation';
 import { flatten } from 'lodash';
 
@@ -23,9 +23,9 @@ const getLocalName = (specifier) => {
 
 export const generate = (files) => {
   const contents = files.map(file => fs.readFileSync(file, 'utf8'));
-  const programs = contents.map(content => esprima.parse(content, { sourceType: 'module' }));
-  const imports = programs.reduce((acc, program) => {
-    const programImports = program.body
+  const sources = contents.map(content => parse(content, { sourceType: 'module' }));
+  const imports = sources.reduce((acc, source) => {
+    const programImports = source.program.body
       .filter(item => item.type === 'ImportDeclaration')
       .filter(item => item.source.value.startsWith('hexlet'));
     return [...acc, ...programImports];
@@ -81,8 +81,8 @@ export default async (outDir: string, items: Array<string>) => {
     const isDir = fs.lstatSync(fullPath).isDirectory();
     return isDir ? getJsFiles(item) : item;
   }));
-  log('files', files);
   const pathnames = files.map(file => path.resolve(process.cwd(), file));
+  log('files', pathnames);
   const packagesDocs = await generate(pathnames);
   await write(outDir, packagesDocs);
 };

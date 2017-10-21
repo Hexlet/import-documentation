@@ -26,11 +26,11 @@
   "dependencies": {
     "babel-polyfill": "*",
     "commander": "*",
+    "debug": "2",
     "documentation": "*",
-    "esprima": "^3",
+    "babylon": "*",
     "get-installed-path": "*",
-    "lodash": "^4",
-    "debug": "2"
+    "lodash": "^4"
   },
   "devDependencies": {
     "babel-cli": "*",
